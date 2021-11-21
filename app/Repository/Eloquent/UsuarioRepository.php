@@ -31,7 +31,25 @@ class UsuarioRepository extends BaseRepository implements UsuarioRepositoryInter
      */
     public function beforeCreate(array &$payload): void
     {
-        $payload['password'] = bcrypt($payload['password']);
+        if (empty(trim($payload['password']))) {
+            unset($payload['password']);
+        } else {
+            $payload['password'] = bcrypt($payload['password']);
+        }
+    }
+    /**
+     * Antes da atualização encripta a senha com uma criptografia unidirecional
+     * 
+     * @param array $payload
+     * @return void
+     */
+    public function beforeUpdate(array &$payload): void
+    {
+        if (empty(trim($payload['password']))) {
+            unset($payload['password']);
+        } else {
+            $payload['password'] = bcrypt($payload['password']);
+        }
     }
 
     /**

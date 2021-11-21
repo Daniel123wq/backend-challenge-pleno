@@ -2,13 +2,11 @@
 
 namespace App\Repository\Eloquent;
 
-use App\Mail\SendMailAfterCreateProd;
 use App\Models\Category;
 use App\Repository\CategoryRepositoryInterface;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rule;
 
-class VeiculoRepository extends BaseRepository implements CategoryRepositoryInterface
+class CategoryRepository extends BaseRepository implements CategoryRepositoryInterface
 {
     /**
      * @var Model
@@ -34,7 +32,7 @@ class VeiculoRepository extends BaseRepository implements CategoryRepositoryInte
     public function getRulesCreate(): array
     {
         return [
-            'nome' => [Rule::unique('categories', 'nome'), 'required', 'nome']
+            'nome' => [Rule::unique('categories', 'nome'), 'required'],
         ];
     }
 
@@ -46,7 +44,7 @@ class VeiculoRepository extends BaseRepository implements CategoryRepositoryInte
     public function getRulesUpdate(): array
     {
         return [
-            'nome' => [Rule::unique('categories', 'nome')->ignore($this->model->id), 'required', 'nome']
+            'nome' => [Rule::unique('categories', 'nome')->ignore($this->model->id), 'required']
         ];
     }
 
