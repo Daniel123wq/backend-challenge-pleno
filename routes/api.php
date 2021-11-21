@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\ApiController;
 use App\Http\Controllers\UsuarioController;
-use App\Http\Controllers\VeiculoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,3 +15,12 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+Route::post('login', [ApiController::class, 'authenticate']);
+Route::post('register', [ApiController::class, 'register']);
+
+Route::group(['middleware' => ['jwt.verify']], function() {
+    Route::apiResources([
+        'usuario' => UsuarioController::class,
+    ], ['except' => ['store']]); // sem create com usuário autenticado.
+});

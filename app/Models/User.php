@@ -50,14 +50,4 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
 
-    /**
-     * obtem relação de veiculos vinculado ao usuário
-     * 
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function veiculos()
-    {
-        return $this->hasMany(Veiculo::class);
-    }
-
 }
