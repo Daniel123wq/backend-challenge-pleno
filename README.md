@@ -20,7 +20,7 @@ Isso permite não só trocar facilmente o banco de dados, mas toda a lógica de 
 PHP >= 7.3
 
 # Usage
-clone esse repositório e executa `composer install` para instalar todas depedências necessárias. Renomeia o arquivo `.env.example` para  `.env` configura nele o DB e execute `php artisan key:generate` para gerar uma chave para aplicação desse projeto laravel.
+clone esse repositório e executa `composer install` para instalar todas depedências necessárias. Como administrador Renomeia o arquivo `.env.example` para  `.env` configura nele o DB e execute `php artisan key:generate` para gerar uma chave para aplicação desse projeto laravel.
 
 Para executar a migration rode `php artisan migrate`
 Para Iniciar o serve `php artisan serve`
