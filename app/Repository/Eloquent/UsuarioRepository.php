@@ -60,7 +60,9 @@ class UsuarioRepository extends BaseRepository implements UsuarioRepositoryInter
      */
     public function beforeDelete(int &$modelId): void
     {
-        \JWTAuth::invalidate(\JWTAuth::fromUser($this->model));
+        $usuario = auth()->user();
+        if ($usuario->id == $modelId)
+            \JWTAuth::invalidate(\JWTAuth::fromUser($this->model));
     }
     
     /**
