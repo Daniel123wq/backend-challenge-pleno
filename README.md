@@ -26,4 +26,4 @@ Para executar a migration rode `php artisan migrate`
 Para Iniciar o serve `php artisan serve`
 
 # Help
-Caso não consiga baixar as dependências, existe um branch serve nesse repository com todas dependências executada no modo DEV. 
+Caso não consiga baixar as dependências, existe um branch serve nesse repository com todas dependências executada no modo DEV, mas não esqueça de fazer os passos acima e executar o `composer dump-autoload`.
