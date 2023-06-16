@@ -10,7 +10,9 @@ RUN apt-get update && apt-get install -y \
     libzip-dev \
     zip \
     unzip \
-    git
+    git \
+    nodejs \
+    npm
 
 # Instala extensões PHP necessárias
 RUN docker-php-ext-install pdo_mysql mbstring zip exif pcntl gd
@@ -36,8 +38,16 @@ RUN php artisan key:generate
 # Define as permissões corretas para os arquivos do Laravel
 RUN chown -R www-data:www-data /var/www/html/storage
 
+RUN cd daniel-frontend-dok
+
+RUN npm i
+
+RUN npm run serve
+
+RUN cd ..
 # Expor a porta do servidor web
 EXPOSE 9000
+EXPOSE 8080
 
 # Comando para iniciar o servidor PHP-FPM
-CMD ["php-fpm"]
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=9000"]
